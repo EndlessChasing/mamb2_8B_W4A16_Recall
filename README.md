@@ -44,7 +44,7 @@ The independent semantic audit passes **75,146 checks**, including raw metric re
 ## Artifacts and runtime
 
 - The trained [adapter](pretrained/w4_resurface_v1/) is included in this repository with its license and exact base binding.
-- The 4.381 GB packed base has been generated and verified locally. It is not stored in Git; [reproduction commands](docs/REPRODUCTION.md#use-the-included-pretrained-adapter) rebuild it from the pinned public source and require the exact manifest hash.
+- Download the complete packed base, matching adapter, tokenizer and runtime from [Hugging Face](https://huggingface.co/EndlessChasing/Mamb2_8B_W4A16_Recall/tree/v0.1.0) or the [GitHub Release](https://github.com/EndlessChasing/mamb2_8B_W4A16_Recall/releases/tag/v0.1.0). The large weights are release assets rather than Git history. See [download and inference commands](docs/HF_MODEL_CARD.md#download-and-generate).
 - Base plus adapter: **4,383,789,571 bytes**, excluding the tokenizer and outer license/docs.
 - The reference decodes the weights to FP16. Paired evaluation peak allocated GPU memory was **17,076,597,760 bytes** (about 17.08 GB); training peak was **34,596,873,216 bytes** (about 34.60 GB). These measurements do not describe a packed-resident INT4 kernel.
 

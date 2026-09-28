@@ -1,5 +1,11 @@
 # Reproduction
 
+For inference with the complete published checkpoint, use the
+[Hugging Face download and generation instructions](HF_MODEL_CARD.md#download-and-generate).
+That bundle includes the packed base, adapter and tokenizer and does not require
+the original checkpoint or another quantization run. The commands below reproduce
+the experiment from the original source in a source-repository checkout.
+
 Run on a CUDA Linux machine. The measured environment is recorded in
 [`reports/environment_v1.json`](../reports/environment_v1.json): Python 3.10.12,
 PyTorch 2.11.0+cu128, mamba-ssm 2.3.2.post1, Triton 3.6.0, NumPy 1.26.4,

@@ -73,6 +73,8 @@ Raw W4 evaluation SHA256:
 `f49f205ab684f883a83d3122b1c84904c71c09ac4c5ed197b137b5c5c423da41`.
 
 The trained adapter and evaluation reports are distributed in this repository.
-The complete 4.381 GB packed base is stored locally and reproducible from the
-pinned public NVIDIA source; it has not been uploaded as a hosted checkpoint.
-See [reproduction](REPRODUCTION.md) and [license scope](WEIGHTS_NOTICE.md).
+Download the complete packed base, adapter, tokenizer and runtime from
+[Hugging Face](https://huggingface.co/EndlessChasing/Mamb2_8B_W4A16_Recall/tree/v0.1.0)
+or the [GitHub Release](https://github.com/EndlessChasing/mamb2_8B_W4A16_Recall/releases/tag/v0.1.0).
+See [download/inference instructions](HF_MODEL_CARD.md), [reproduction](REPRODUCTION.md)
+and [license scope](WEIGHTS_NOTICE.md).
