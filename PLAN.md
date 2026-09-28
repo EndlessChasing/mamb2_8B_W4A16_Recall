@@ -7,7 +7,7 @@
 - [x] Implement packed W4 codec and validate independent roundtrip/math tests.
 - [x] Produce packed model with full source/file hashes and measured byte counts.
 - [x] Verify frozen-base identity, zero-adapter equivalence and training gradients.
-- [ ] Train Resurface for1536 successful updates.
-- [ ] Evaluate actual serialized adapter against W4 base on full PPL and MK.
-- [ ] Report actual quality, storage, GPU memory and limitations.
-- [ ] Publish reproducible code/results and properly licensed artifacts.
+- [x] Train Resurface for 1,536 successful updates.
+- [x] Evaluate actual serialized adapter against W4 base on full PPL and MK.
+- [x] Report actual quality, storage, GPU memory and limitations.
+- [x] Publish reproducible code/results and the Apache-2.0 adapter; retain the full packed base locally with a reproducible recipe.

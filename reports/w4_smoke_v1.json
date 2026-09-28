@@ -1,0 +1,64 @@
+{
+  "format": "MAMBA2_W4_RESURFACE_TRAIN_V1",
+  "complete": true,
+  "mode": "smoke",
+  "started_unix": 1790631991.5516386,
+  "source_sha256": "8c3732d4483f07c9f01b478313e31ba04a21c5125cddff7bddce2f6a4bc4a9fa",
+  "history": [
+    {
+      "attempt": 1,
+      "successful_updates": 1,
+      "case_id": "resurface-train-n16-t0-s159",
+      "schedule_entry": 159,
+      "prose_window": 324,
+      "prose_start": 0,
+      "answer_targets": 7,
+      "seconds": 11.700964441988617,
+      "mk_ce": 0.5243395056043353,
+      "prose_ce": 2.253443380158008,
+      "prose_kl": 0.0,
+      "prose_closure": 0.13801202178001404,
+      "overflow": false,
+      "gradient_norm_before_clip": 5.707419395446777,
+      "loss_scale": 1024.0
+    }
+  ],
+  "checkpoints": [],
+  "binding": {
+    "w4_manifest_sha256": "3add3f79f19d2da181c700680500390f773a47b2785d8f6e0ccaaf2ddd7bbc05",
+    "source_checkpoint_sha256": "47c2766f6aad89d73beafbeaecb334aab902d7370906d081764a90bb7a8bbbcb",
+    "tokenizer_sha256": "5862e2f71caf762bc9845662be5fec2867deb58d874568235a02a36c5111cd09",
+    "protocol_sha256": "9aaba5861cf818275acc1bad00c87ccab22d2d7fc3538f5f6ef5456e67c1d472",
+    "train_manifest_sha256": "3044ec372be012eeb1b51924fc4c93871e7623dfe94e7c6bd7ff3f7e87fbbe96",
+    "prose_manifest_sha256": "facb2ca461615a4199781bd21784d642d6674f5b862641b3b9edac3fb499b89d",
+    "prose_tokens_sha256": "e54b02e5162e042a9cdd504f4eb1b1652724fb240bbc2c97608967aa26297233",
+    "prose_tokens_int64le_sha256": "049dfb6847d778897fd19b67653c3189f29fbc19a36022e8a4801306d08228bc",
+    "prose_file_exact_historical": true,
+    "adapter": "MAMBA2_POST_D_RESURFACE_FP16_V1",
+    "successful_updates": 1536
+  },
+  "w4_package": {
+    "format": "mamba2-independent-affine-w4-v1",
+    "manifest_sha256": "3add3f79f19d2da181c700680500390f773a47b2785d8f6e0ccaaf2ddd7bbc05",
+    "source_checkpoint_sha256": "47c2766f6aad89d73beafbeaecb334aab902d7370906d081764a90bb7a8bbbcb",
+    "parameter_count": 8236999680,
+    "tensor_count": 507,
+    "w4_tensor_count": 114,
+    "fp16_tensor_count": 393,
+    "tensor_bytes": 4381242635,
+    "resident_weight_dtype": "float16",
+    "packed_resident_kernel": false,
+    "file_hashes_verified": true,
+    "decoded_hashes_verified": true
+  },
+  "zero_adapter_hidden_exact": true,
+  "successful_updates": 1,
+  "attempts": 1,
+  "gpu_memory": {
+    "peak_allocated_bytes": 34094560256,
+    "peak_reserved_bytes": 34303115264,
+    "current_allocated_bytes": 33101352448,
+    "note": "Native FP16 quality runtime; stored W4 matrices expand to FP16 GPU weights"
+  },
+  "finished_unix": 1790632061.8448546
+}

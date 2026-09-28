@@ -1,0 +1,11 @@
+{
+  "complete": true,
+  "passed": true,
+  "checked_tensor_files": 507,
+  "failed_files": [],
+  "unexpected_files": [],
+  "missing_files": [],
+  "manifest_sha256": "3add3f79f19d2da181c700680500390f773a47b2785d8f6e0ccaaf2ddd7bbc05",
+  "package_bytes": 4381415300,
+  "scope": "All local copied packed files rehashed against remote quantization manifest; no second numerical or GPU run."
+}

@@ -1,0 +1,117 @@
+{
+  "started_unix": 1790631879.409399,
+  "complete": true,
+  "stages": [
+    {
+      "name": "quantize",
+      "command": [
+        "/home/horde/.venvs/lodram/bin/python",
+        "scripts/quantize_w4.py",
+        "--source",
+        "/home/horde/Mamba2-8B-E8W5/models/source",
+        "--output",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_base_v1"
+      ],
+      "started_unix": 1790631879.4103606,
+      "returncode": 0,
+      "finished_unix": 1790631990.435574,
+      "log": "/home/horde/mamb2_8B_W4A16_Recall/logs/quantize_v1.log"
+    },
+    {
+      "name": "smoke",
+      "command": [
+        "/home/horde/.venvs/lodram/bin/python",
+        "scripts/train.py",
+        "--source-dir",
+        "/home/horde/Mamba2-8B-E8W5/models/source",
+        "--w4-dir",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_base_v1",
+        "--data-root",
+        "/home/horde/mamb2_8B_W4A16_Recall/training_data/numeric_v1",
+        "--train-manifest-sha256",
+        "3044ec372be012eeb1b51924fc4c93871e7623dfe94e7c6bd7ff3f7e87fbbe96",
+        "--prose-manifest",
+        "/home/horde/mamb2_8B_W4A16_Recall/docs/prose_train_manifest.json",
+        "--prose-tokens",
+        "/home/horde/mamb2_8B_Recall/training_data/prose/training_tokens.pt",
+        "--out-dir",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_smoke_v1",
+        "--smoke"
+      ],
+      "started_unix": 1790631990.436064,
+      "returncode": 0,
+      "finished_unix": 1790632062.9398863,
+      "log": "/home/horde/mamb2_8B_W4A16_Recall/logs/smoke_v1.log"
+    },
+    {
+      "name": "train",
+      "command": [
+        "/home/horde/.venvs/lodram/bin/python",
+        "scripts/train.py",
+        "--source-dir",
+        "/home/horde/Mamba2-8B-E8W5/models/source",
+        "--w4-dir",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_base_v1",
+        "--data-root",
+        "/home/horde/mamb2_8B_W4A16_Recall/training_data/numeric_v1",
+        "--train-manifest-sha256",
+        "3044ec372be012eeb1b51924fc4c93871e7623dfe94e7c6bd7ff3f7e87fbbe96",
+        "--prose-manifest",
+        "/home/horde/mamb2_8B_W4A16_Recall/docs/prose_train_manifest.json",
+        "--prose-tokens",
+        "/home/horde/mamb2_8B_Recall/training_data/prose/training_tokens.pt",
+        "--out-dir",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_resurface_v1"
+      ],
+      "started_unix": 1790632062.9410322,
+      "returncode": 0,
+      "finished_unix": 1790633752.199495,
+      "log": "/home/horde/mamb2_8B_W4A16_Recall/logs/train_v1.log"
+    },
+    {
+      "name": "evaluate",
+      "command": [
+        "/home/horde/.venvs/lodram/bin/python",
+        "scripts/evaluate.py",
+        "--source-dir",
+        "/home/horde/Mamba2-8B-E8W5/models/source",
+        "--w4-dir",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_base_v1",
+        "--adapter",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_resurface_v1/adapter_fp16.pt",
+        "--train-report",
+        "/home/horde/mamb2_8B_W4A16_Recall/artifacts/w4_resurface_v1/report.json",
+        "--data-root",
+        "/home/horde/mamb2_8B_W4A16_Recall/training_data/numeric_v1",
+        "--eval-manifest-sha256",
+        "ec7499994e42803b8aaeca3c74db7e3198f4a403513123100429ef830e9c7f1f",
+        "--report",
+        "/home/horde/mamb2_8B_W4A16_Recall/reports/w4_resurface_v1_confirm_full.json"
+      ],
+      "started_unix": 1790633752.1999037,
+      "returncode": 0,
+      "finished_unix": 1790634744.7536597,
+      "log": "/home/horde/mamb2_8B_W4A16_Recall/logs/evaluate_v1.log"
+    }
+  ],
+  "protocol_sha256": "9aaba5861cf818275acc1bad00c87ccab22d2d7fc3538f5f6ef5456e67c1d472",
+  "code_sha256": {
+    "mamba2_recall/__init__.py": "79b32606ac476c3248911c55571bf97f96689770067856ce8347837478ef33fd",
+    "mamba2_recall/calibration.py": "54e178521abfe2513fb7bac2aed2ef178fc01b63135222ecc212001ee3ce0a04",
+    "mamba2_recall/evaluation.py": "95cba0b201e37f92e6cbfadb9b3e9d79ba7b0cdc9efda6a58a6216b0d84d35e0",
+    "mamba2_recall/resurface_data.py": "1a547fe3cedca406d6e3db85f65c3ce554558691e3b29b9c92d8fd6bd1c1ba35",
+    "mamba2_recall/resurface_loss.py": "ec045368583b6e49f484341b2d718658bb59e8d11050710377742752c1c67294",
+    "mamba2_recall/resurface_native.py": "2dd08c7ee8958c832f0ae9da7cf5f261dceeff3e528e493c905c7c52df7166d7",
+    "mamba2_recall/runtime.py": "0c84d51c10a08318f6ab7cacf275f739913a6744954de838c8f06c3782e75ad3",
+    "mamba2_recall/w4.py": "e1fb34175dabee56092fec7e627503f57d2005ff0abed52035ba661bc4ae1d79",
+    "scripts/check_w4.py": "65f40b889df28f62930335bbe5cb76df0e47c3f052094b0ddf53eb35c7e97293",
+    "scripts/evaluate.py": "982d477c37a569f501b4a1f4ad0a2c2ffa279c4589b39c539bfe469f45f6a776",
+    "scripts/prepare_data.py": "11d5e6872382fb8a62987937ec37006422b38e4b1650431a4794d5834c6a4604",
+    "scripts/prepare_prose.py": "f63659bab565f2428629f2c9239ba2bdb4ccfb6c647accc44be71b2f419a7c7e",
+    "scripts/quantize_w4.py": "015b3a64d47033bba8e0cfd0a6cf7c0f037892c4bdd097e5fcc39bbbe75eaff3",
+    "scripts/run_experiment.py": "4bc1111d892062580974aec35d8c5bf8096ae73985fd89c5c732a808498380df",
+    "scripts/train.py": "8c3732d4483f07c9f01b478313e31ba04a21c5125cddff7bddce2f6a4bc4a9fa"
+  },
+  "current_stage": "evaluate",
+  "finished_unix": 1790634744.754081
+}

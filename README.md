@@ -1,6 +1,6 @@
 # mamb2_8B_W4A16_Recall
 
-Independent W4A16 quantization of pure NVIDIA Mamba2-8B, followed by a Resurface-inspired recall adapter. The target includes redistributable model weights.
+Independent W4A16 quantization of pure NVIDIA Mamba2-8B, followed by a Resurface-inspired recall adapter. The quantized weights and independently trained adapter tensors use Apache-2.0.
 
 ## Base selection
 
@@ -20,16 +20,34 @@ Measured base package: **4,381,415,300 bytes** including manifest (4.381GB, abou
 
 ## Resurface and verification
 
-The frozen W4 base receives a post-D, pre-gated-RMSNorm, memoryless head-mixing adapter at all 56 layers. The adapter has 1,154,104 parameters. Training uses 1,536 successful updates and a frozen copy of the same W4 base as prose teacher. The final checkpoint is the sole candidate.
+The frozen W4 base receives a post-D, pre-gated-RMSNorm, memoryless head-mixing adapter at all 56 layers. The adapter has 1,154,104 parameters. Training completed 1,536 successful updates (1,542 attempts, six overflow retries), using a frozen copy of the same W4 base as prose teacher. The final checkpoint is the sole candidate. Its 224 serialized FP16 tensors occupy a 2,374,271-byte file. This independently implemented post-D variant is inspired by the [Resurface reference](https://github.com/Oso1106/Resurface-Multi-Binding-Recall-Is-Latent-in-Mamba-s-State).
 
 Quality evaluation pairs the W4 base and its serialized FP16 adapter on 130 WikiText-2 validation windows (264,764 targets) and 768 numeric multi-key recall prompts (384 normal, 384 target-removed). This is a previously observed benchmark family, not an untouched generalization test.
 
-**Status: packed model generation and discarded GPU training smoke have passed; formal adapter training is running. No full W4 PPL/MK result or released adapter is available yet.** Previous FP16 or E8/W5 results must not be substituted for this model's measurements.
+**Status: quantization, training, full paired evaluation and independent report audit are complete.**
+
+| Model | WikiText-2 PPL ↓ | MK recall ↑ |
+|---|---:|---:|
+| Source FP16, historical | 7.33418 | 147/384 (38.28%) |
+| Source FP16 + Resurface, historical | 7.05206 | 365/384 (95.05%) |
+| Independent W4A16 | 8.01210 | 141/384 (36.72%) |
+| **Independent W4A16 + Resurface** | **7.61405** | **361/384 (94.01%)** |
+
+The W4 adapter reduces PPL by **4.97%** and improves recall by **57.29 percentage points** against its own base. Its PPL remains **7.97% higher** than the historical FP16 + Resurface control. All four arms score 0/384 on target-removed controls. The historical comparison passes all recorded prompt/window identity checks; its GPU execution was not rerun for this experiment.
+
+The independent semantic audit passes **75,146 checks**, including raw metric recomputation, all packed file hashes, serialized adapter identity and training schedule. A fresh-process inference CLI replay reproduces one evaluation case exactly. See [results and scope](docs/RESULTS.md), [full W4 report](reports/w4_resurface_v1_confirm_full_reference.json) and [audit receipt](reports/semantic_audit_v1.json).
 
 - [Reproduction commands](docs/REPRODUCTION.md)
 - [Frozen protocol](docs/PROTOCOL.md)
 - [Checklist](PLAN.md)
 
+## Artifacts and runtime
+
+- The trained [adapter](pretrained/w4_resurface_v1/) is included in this repository with its license and exact base binding.
+- The 4.381 GB packed base has been generated and verified locally. It is not stored in Git; [reproduction commands](docs/REPRODUCTION.md#use-the-included-pretrained-adapter) rebuild it from the pinned public source and require the exact manifest hash.
+- Base plus adapter: **4,383,789,571 bytes**, excluding the tokenizer and outer license/docs.
+- The reference decodes the weights to FP16. Paired evaluation peak allocated GPU memory was **17,076,597,760 bytes** (about 17.08 GB); training peak was **34,596,873,216 bytes** (about 34.60 GB). These measurements do not describe a packed-resident INT4 kernel.
+
 ## Licenses
 
-The original NVIDIA model is Apache-2.0; retain its required notices and identify modifications when distributing derived quantized weights. Project adapter/framework code follows the inherited GPL-3.0 license in [LICENSE](LICENSE). Quamba materials are excluded from the implementation and distribution.
+Original and independently quantized base weights, plus the trained adapter tensors: **Apache-2.0**. Retain required notices and identify modifications, as described in [weight provenance](docs/WEIGHTS_NOTICE.md). Framework, quantization and adapter implementation code: **GPL-3.0**, in [LICENSE](LICENSE). Quamba materials are excluded from the implementation and distribution.

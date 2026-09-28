@@ -1,0 +1,37 @@
+{
+  "complete": true,
+  "passed": true,
+  "case_id": "resurface-confirm-n16-t0-s0",
+  "checks": {
+    "generated_ids_exact": true,
+    "completion_exact": true,
+    "prompt_tokens_exact": true,
+    "cache_bytes_exact": true,
+    "adapter_enabled": true
+  },
+  "result": {
+    "completion": "696767\n\n\n\nR",
+    "generated_ids": [
+      251490,
+      251574,
+      251561,
+      251574,
+      251581,
+      251574,
+      251581,
+      14,
+      14,
+      14,
+      14,
+      251539
+    ],
+    "prompt_tokens": 263,
+    "cache_bytes": 122028032,
+    "adapter_enabled": true,
+    "runtime": "decoded FP16 reference; packed-resident W4 kernel is not implemented"
+  },
+  "generation_script_sha256": "270408e555dd00e01f24e4818d37e38f0a060d0b6fc94695964d1822ce81c198",
+  "evaluation_sha256": "f49f205ab684f883a83d3122b1c84904c71c09ac4c5ed197b137b5c5c423da41",
+  "elapsed_seconds": 35.07479906082153,
+  "scope": "Fresh-process CLI exact replay of one recorded evaluation prompt; not a new quality benchmark."
+}
