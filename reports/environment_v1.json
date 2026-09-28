@@ -1,0 +1,14 @@
+{
+  "python": "3.10.12",
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "mamba-ssm": "2.3.2.post1",
+    "numpy": "1.26.4",
+    "triton": "3.6.0",
+    "datasets": "4.8.5",
+    "sentencepiece": "0.2.1"
+  },
+  "cuda_runtime": "12.8",
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "tf32_matmul": false
+}
