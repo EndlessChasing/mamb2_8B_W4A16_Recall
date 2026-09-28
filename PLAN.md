@@ -10,4 +10,4 @@
 - [x] Train Resurface for 1,536 successful updates.
 - [x] Evaluate actual serialized adapter against W4 base on full PPL and MK.
 - [x] Report actual quality, storage, GPU memory and limitations.
-- [x] Publish reproducible code/results and the Apache-2.0 adapter; retain the full packed base locally with a reproducible recipe.
+- [x] Publish the complete base, adapter, tokenizer, code and evidence on Hugging Face and GitHub Release v0.1.0; verify public access and all remote file identities.

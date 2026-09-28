@@ -1,0 +1,41 @@
+{
+  "complete": true,
+  "bundle_files": 564,
+  "bundle_bytes": 4392453043,
+  "archive_roundtrip_files_verified": 564,
+  "github_source_commit": "82a1945e39a673da1d527bf42e9af7e1da81e648",
+  "assets": {
+    "w4_manifest.json": {
+      "bytes": 172665,
+      "sha256": "3add3f79f19d2da181c700680500390f773a47b2785d8f6e0ccaaf2ddd7bbc05"
+    },
+    "mamb2_8B_W4A16_Recall-v0.1.0.tar.part-01": {
+      "bytes": 1500000000,
+      "sha256": "045c044b8e0f462e96e8c267cd3f0b145a3873e28780f4662f46297556eb6143"
+    },
+    "mamb2_8B_W4A16_Recall-v0.1.0.tar.part-00": {
+      "bytes": 1500000000,
+      "sha256": "d0851acf35a16cb8b4fa4ea9ab968c76fff77e0aeaa5d7916fa185f8e7d25ae2"
+    },
+    "RELEASE_MANIFEST.json": {
+      "bytes": 79759,
+      "sha256": "9e58a4d71c9bcb44085af3331ce65fd00e4fe59fb85f6f438842268046956aae"
+    },
+    "release-assets.sha256": {
+      "bytes": 321,
+      "sha256": "f93dad5fd1477dac041c64898616cd08845e3a19a9ca0fad59bb1df0e96d8972"
+    },
+    "adapter_fp16.pt": {
+      "bytes": 2374271,
+      "sha256": "6d38c24a102cbf83c5f1dfe4362a0b5c5e779e793a27bccd4e592ff6c9de7ca1"
+    },
+    "mamb2_8B_W4A16_Recall-v0.1.0.tar.part-02": {
+      "bytes": 1392898560,
+      "sha256": "1518377e3118ff997fa6ab84694dc7d0ac3de4f052c87d2502e42435d45b7978"
+    },
+    "SHA256SUMS": {
+      "bytes": 662,
+      "sha256": "df9acafd12b06f1a15b2563c2aa4e2e7a85226c88f31c1f8028841b3ba86062a"
+    }
+  }
+}

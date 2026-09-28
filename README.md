@@ -48,6 +48,10 @@ The independent semantic audit passes **75,146 checks**, including raw metric re
 - Base plus adapter: **4,383,789,571 bytes**, excluding the tokenizer and outer license/docs.
 - The reference decodes the weights to FP16. Paired evaluation peak allocated GPU memory was **17,076,597,760 bytes** (about 17.08 GB); training peak was **34,596,873,216 bytes** (about 34.60 GB). These measurements do not describe a packed-resident INT4 kernel.
 
+## Publication verification
+
+Release **v0.1.0** is public on both platforms. Anonymous verification matched all **564 bundle files** on Hugging Face and **8 release assets** on GitHub. The complete unpacked bundle is **4,392,453,043 bytes**, including tokenizer, runtime and documentation. See [publication record](docs/PUBLICATION.md).
+
 ## Licenses
 
 Original and independently quantized base weights, plus the trained adapter tensors: **Apache-2.0**. Retain required notices and identify modifications, as described in [weight provenance](docs/WEIGHTS_NOTICE.md). Framework, quantization and adapter implementation code: **GPL-3.0**, in [LICENSE](LICENSE). Quamba materials are excluded from the implementation and distribution.
