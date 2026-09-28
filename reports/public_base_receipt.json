@@ -51,5 +51,6 @@
   "weight_file_sha256_matches_upstream": true,
   "checkpoint_tensor_entries": 734,
   "license": "UT Austin Research License (Quamba 2.0)",
-  "validation_scope": "Downloaded bytes and passive tensor metadata checked. No inference, PPL or MK measurement yet."
+  "validation_scope": "Downloaded bytes and passive tensor metadata checked. No inference, PPL or MK measurement yet.",
+  "selection_status": "rejected: user requires freely redistributable weights"
 }

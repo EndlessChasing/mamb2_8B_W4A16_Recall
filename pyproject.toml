@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mamb2-8b-w4a16-recall"
+version = "0.1.0"
+description = "Independent W4A16 Mamba2-8B with a Resurface readout adapter"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "torch>=2.6", "sentencepiece", "datasets", "huggingface-hub", "einops"]
+
+[tool.setuptools.packages.find]
+include = ["mamba2_recall*"]

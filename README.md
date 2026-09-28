@@ -1,34 +1,32 @@
 # mamb2_8B_W4A16_Recall
 
-Research project: apply a Resurface-inspired recall adapter to an existing public W4A16 quantization of pure Mamba2-8B.
+Independent W4A16 quantization of pure NVIDIA Mamba2-8B, followed by a Resurface-inspired recall adapter. The target includes redistributable model weights.
 
-## Public base
+## Base selection
 
-[ut-enyac/quamba2-8b-converted-w4a16](https://huggingface.co/ut-enyac/quamba2-8b-converted-w4a16), from the [official Quamba project](https://github.com/enyac-group/Quamba).
+**Selected source:** [nvidia/mamba2-8b-3t-4k](https://huggingface.co/nvidia/mamba2-8b-3t-4k), under Apache-2.0, pinned at `b915550c63ba9359f88f44d1f6a600d85af27302`.
 
-- Pinned revision: `997f760f29c10574ee8363b8680d636048dee048`.
-- Source architecture: NVIDIA `mamba2-8b-3t-4k`; 56 Mamba2 layers, width 4096, eight SSM groups, no attention layers, untied 256K embedding and output head.
-- Published configuration: `W4A16QMamba2`, `W4O16Embedding`, `W4A16B16O16Linear`.
-- Weight file: **4,253,601,410 bytes** (4.254 GB / 3.962 GiB). This is file size, not measured runtime GPU memory.
-- Weight SHA256: `0e0097aeffe8da48a21bf9698e32f474f54f766b902661b5626b366a8d5c4bc4`.
-- The full weight download has been hashed and its 734 tensor entries inspected. See [receipt](reports/public_base_receipt.json).
+The checkpoint contains 8,236,999,680 parameters: 56 pure Mamba2 blocks, width4096, eight SSM groups, and separate 256K embedding/output matrices. Our source-native runtime uses FP16 weights and activations.
 
-```bash
-hf download ut-enyac/quamba2-8b-converted-w4a16 \
-  --revision 997f760f29c10574ee8363b8680d636048dee048 \
-  --local-dir models/quamba2-w4a16
-```
+We searched for an existing public W4A16 checkpoint with permissive redistribution terms. This search found none meeting all requirements. The public Quamba2 W4A16 checkpoint was downloaded and inspected, then **rejected** because its attached UT Austin Research License does not satisfy the requested redistribution scope. Its code and weights are not used for this project. See [search record](docs/PUBLIC_BASE_SEARCH.md).
 
-## License and distribution
+## Independent W4 format
 
-The upstream checkpoint includes the [UT Austin Research License](https://huggingface.co/ut-enyac/quamba2-8b-converted-w4a16/blob/997f760f29c10574ee8363b8680d636048dee048/license.txt). Public download availability must not be interpreted as permission for unrestricted redistribution. Its terms cover research/personal use and restrict redistribution of the software and derivative products. We have not established permission to republish the checkpoint or adaptations.
+Quantize all 114 large matrices (embedding, output head, and two projections per block) into packed affine INT4 codes, group size128. Store FP16 scale and offset per group: approximately **4.25 bits per quantized weight**, plus headers. The393 small tensors stayFP16.
 
-This repository currently contains project documentation and factual metadata only. It does not redistribute upstream weights or Quamba source code. Licensing and the intended distribution scope must be resolved before publishing an adaptation.
+Group parameters minimize weight-space reconstruction error across a fixed clipping grid. Quantization uses no evaluation text. We first evaluate the actual packed-file decoding using a native FP16 runtime. **This reference expands weights in GPU memory; packed storage size is not GPU residency.**
 
-## Status
+## Resurface and verification
 
-**No W4A16 Resurface adapter has been trained or validated yet.** Metrics from our separate FP16 and E8/W5 projects do not establish quality for this base.
+The frozen W4 base receives a post-D, pre-gated-RMSNorm, memoryless head-mixing adapter at all56layers. The adapter has1,154,104 parameters. Training uses1536 successful updates and a frozen copy of the same W4 base as prose teacher. The final checkpoint is the sole candidate.
 
-The integration must preserve Quamba's rotations, online Hadamard transform and FP32 residual accumulation. Its inference-only quantized operators need a verified differentiable bridge for adapter training. A dense FP16 decoding reference would not demonstrate packed W4 GPU residency or Quamba kernel performance.
+Quality evaluation pairs the W4 base and its serializedFP16 adapter on130 WikiText-2 validation windows (264,764 targets) and768 numeric multi-key recall prompts (384 normal,384 target-removed). This is a previously observed benchmark family, not an untouched generalization test.
 
-See [PLAN.md](PLAN.md) for remaining work.
+**Status: implementation and validation in progress. No new W4 PPL/MK result or released adapter is available yet.** Previous FP16 or E8/W5 results must not be substituted for this model's measurements.
+
+- [Frozen protocol](docs/PROTOCOL.md)
+- [Checklist](PLAN.md)
+
+## Licenses
+
+The original NVIDIA model is Apache-2.0; retain its required notices and identify modifications when distributing derived quantized weights. Project adapter/framework code follows the inherited GPL-3.0 license in [LICENSE](LICENSE). Quamba materials are excluded from the implementation and distribution.
