@@ -75,7 +75,7 @@ def gpu_memory_receipt():
     return {"peak_allocated_bytes": torch.cuda.max_memory_allocated(),
             "peak_reserved_bytes": torch.cuda.max_memory_reserved(),
             "current_allocated_bytes": torch.cuda.memory_allocated(),
-            "note": "Original BF16 source cast to native FP16 runtime"}
+            "note": "Native FP16 quality runtime; stored W4 matrices expand to FP16 GPU weights"}
 
 
 def checkpoint_path(source_dir):

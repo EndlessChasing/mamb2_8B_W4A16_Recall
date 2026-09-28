@@ -61,7 +61,9 @@ def load_training_inputs(args):
                 prose_manifest['training_tokens_sha256_int64le']):
         raise ValueError('Expected 448 disjoint, pinned prose TRAIN windows')
     w4_manifest = json.loads((args.w4_dir/'manifest.json').read_text())
-    if not w4_manifest['complete'] or w4_manifest['source_checkpoint_sha256'] != runtime.SOURCE_CHECKPOINT_SHA256:
+    if (not w4_manifest['complete']
+            or w4_manifest['source_checkpoint_sha256'] != runtime.SOURCE_CHECKPOINT_SHA256
+            or w4_manifest.get('protocol_sha256') != protocol_sha):
         raise ValueError('W4 package source or completeness differs')
     binding = {'w4_manifest_sha256':data.sha_file(args.w4_dir/'manifest.json'),
                'source_checkpoint_sha256': runtime.SOURCE_CHECKPOINT_SHA256,

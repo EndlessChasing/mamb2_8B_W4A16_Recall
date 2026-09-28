@@ -1,0 +1,30 @@
+{
+  "executor": "independent_w4_codec subagent",
+  "passed": true,
+  "execution": "CPU-only /home/horde/.venvs/lodram/bin/python scripts/check_w4.py --self-test",
+  "checks": [
+    "all_nibble_codes_and_byte_order",
+    "odd_columns_and_padding",
+    "zero_constant_subnormal_groups",
+    "nonfinite_rejection",
+    "fp16_endpoint_overflow",
+    "serialized_mse_selection",
+    "cross_chunk_row_roundtrip",
+    "fp16_roundtrip",
+    "truncation_and_trailing_bytes",
+    "file_and_decoded_hashes",
+    "strict_invalid_manifest"
+  ],
+  "meta_schema": {
+    "tensors": 507,
+    "parameters": 8236999680,
+    "w4_tensors": 114,
+    "projected_tensor_bytes": 4381242635
+  },
+  "code_sha256": {
+    "mamba2_recall/w4.py": "e1fb34175dabee56092fec7e627503f57d2005ff0abed52035ba661bc4ae1d79",
+    "mamba2_recall/runtime.py": "0c84d51c10a08318f6ab7cacf275f739913a6744954de838c8f06c3782e75ad3",
+    "scripts/check_w4.py": "65f40b889df28f62930335bbe5cb76df0e47c3f052094b0ddf53eb35c7e97293"
+  },
+  "scope": "CPU math/file checks and native META inventory, not full model inference or quality."
+}

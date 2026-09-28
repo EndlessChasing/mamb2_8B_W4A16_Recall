@@ -82,6 +82,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--w4-dir',type=Path,required=True)
     p.add_argument('--source-dir',type=Path,required=True)
+    p.add_argument('--train-report',type=Path,required=True)
     p.add_argument('--adapter',type=Path,required=True)
     p.add_argument('--data-root',type=Path,required=True)
     p.add_argument('--eval-manifest-sha256',required=True)
@@ -101,6 +102,16 @@ def main():
                    for row,tok in zip(cases,tokens))):
         raise ValueError('Evaluation data/protocol identity differs')
     adapter=native.read_fp16(args.adapter)
+    train_report=json.loads(args.train_report.read_text())
+    if (not train_report.get('complete') or train_report.get('mode')!='formal'
+            or train_report.get('successful_updates')!=1536
+            or train_report.get('binding')!=adapter['binding']
+            or train_report.get('adapter',{}).get('sha256')!=data.sha_file(args.adapter)
+            or adapter['gate_mode']!='soft'
+            or adapter['binding'].get('successful_updates')!=1536
+            or adapter['binding'].get('adapter')!=native.FORMAT
+            or adapter['binding'].get('tokenizer_sha256')!=tokenizer.sha256):
+        raise ValueError('Expected the completed final1536 soft adapter and its training receipt')
     w4_manifest_sha256=data.sha_file(args.w4_dir/'manifest.json')
     if adapter['binding'].get('w4_manifest_sha256')!=w4_manifest_sha256:
         raise ValueError('Adapter bound to another W4 package')
@@ -115,6 +126,7 @@ def main():
         'tokenizer_sha256':tokenizer.sha256,'protocol_sha256':manifest['protocol_sha256'],
         'data_manifest_sha256':args.eval_manifest_sha256,
         'adapter_sha256':data.sha_file(args.adapter),
+        'training_report_sha256':data.sha_file(args.train_report),
         'dataset_status':'previously observed template family and numeric CONFIRM instances',
         'model_precision':'independent packed affine W4, decoded FP16 reference; A16 and FP16 cache'}
     write_json(args.report,report)

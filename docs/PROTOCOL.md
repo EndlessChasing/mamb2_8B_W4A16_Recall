@@ -78,10 +78,10 @@ nonoverlapping reset windows and all 264,764 next-token targets. Record all
 raw scores, differences and file hashes; no early selection or task switch.
 
 The earlier compressed arm's independent CONFIRM set has now been observed and
-uses the same three template families. Running this source control on it gives
+uses the same three template families. Running this W4 experiment on it gives
 a matched historical comparison, **not a newly untouched holdout**. The
 WikiText-2 validation text also informed earlier development. We will not
-promote a source+adapter result to a general recall conclusion without new
+promote a W4+adapter result to a general recall conclusion without new
 templates, longer distances and a truly untouched corpus.
 
 Report the new W4 base and W4+adapter together, with matched source FP16 historical metrics clearly identified as historical. Verify prompt/window hashes before comparing them. Report PPL and recall together; no packed-runtime speed or memory claim follows from these quality measurements.
