@@ -1,0 +1,55 @@
+{
+  "repo_id": "ut-enyac/quamba2-8b-converted-w4a16",
+  "revision": "997f760f29c10574ee8363b8680d636048dee048",
+  "public": true,
+  "gated": false,
+  "config": {
+    "d_model": 4096,
+    "d_intermediate": 0,
+    "n_layer": 56,
+    "vocab_size": 256000,
+    "ssm_cfg": {
+      "layer": "W4A16QMamba2",
+      "ngroups": 8,
+      "chunk_size": 128
+    },
+    "attn_layer_idx": [],
+    "attn_cfg": {},
+    "rms_norm": true,
+    "residual_in_fp32": true,
+    "fused_add_norm": true,
+    "pad_vocab_size_multiple": 128,
+    "tie_embeddings": false,
+    "norm_cfg": {
+      "norm": "RMSNorm"
+    },
+    "embedding_cfg": {
+      "layer": "W4O16Embedding"
+    },
+    "lm_head_cfg": {
+      "layer": "W4A16B16O16Linear"
+    }
+  },
+  "files_downloaded_and_hashed": {
+    "config.json": {
+      "bytes": 569,
+      "sha256": "af0fc54eed893782d7da058a49d09cc8b7589db5a8117fd9350513b91d5cab99"
+    },
+    "license.txt": {
+      "bytes": 11273,
+      "sha256": "4f0b80f3a6831bc2860748e924fa87acfa967d1359a8f89dd9bbca2b98d7d1ae"
+    },
+    "mt_nlg_plus_multilingual_ja_zh_the_stack_frac_015_256k.model": {
+      "bytes": 4573028,
+      "sha256": "5862e2f71caf762bc9845662be5fec2867deb58d874568235a02a36c5111cd09"
+    },
+    "pytorch_model.bin": {
+      "bytes": 4253601410,
+      "sha256": "0e0097aeffe8da48a21bf9698e32f474f54f766b902661b5626b366a8d5c4bc4"
+    }
+  },
+  "weight_file_sha256_matches_upstream": true,
+  "checkpoint_tensor_entries": 734,
+  "license": "UT Austin Research License (Quamba 2.0)",
+  "validation_scope": "Downloaded bytes and passive tensor metadata checked. No inference, PPL or MK measurement yet."
+}
