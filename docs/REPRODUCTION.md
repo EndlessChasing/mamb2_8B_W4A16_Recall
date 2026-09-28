@@ -91,3 +91,19 @@ CUDA_VISIBLE_DEVICES= python scripts/summarize_results.py \
 An optional `--historical PATH` accepts the earlier source FP16 paired report.
 The audit requires identical recorded window/prompt hashes before comparing
 metrics; it does not rerun the historical GPU evaluation.
+
+## Generate with the final adapter
+
+After successful training, use the standalone W4 package, tokenizer and adapter:
+
+```bash
+python scripts/generate.py \
+  --w4-dir artifacts/w4_base_v1 \
+  --tokenizer models/source/mt_nlg_plus_multilingual_ja_zh_the_stack_frac_015_256k.model \
+  --adapter artifacts/w4_resurface_v1/adapter_fp16.pt \
+  --prompt 'The key idea of a state space model is' --max-new-tokens 64
+```
+
+Omit `--adapter` for the quantized baseline. The helper verifies the adapter's
+W4-package and tokenizer hashes. This is a base completion model, not an
+instruction/chat model. Its numerical reference uses expanded FP16 GPU weights.
