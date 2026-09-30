@@ -1,0 +1,61 @@
+{
+  "format": "RECALL_WT2_TEST_DOCS_OVERLAY_CHECKSUMS_V1",
+  "model_kind": "w4",
+  "github_base_main_commit": "5232f5d2a9ce6a7be78e28700e1530e733d27a35",
+  "hf_base_main_commit": "e1baffa7aa680f3dc26d7d7df2104756248d1a24",
+  "scope": "Additional small docs/evaluation files only; original checkpoints/tags unchanged",
+  "files_excluding_this_checksum_file": {
+    "README.md": {
+      "bytes": 6272,
+      "sha256": "94ad328f42f87015be9734cb1bf1f3733500da2a4270d375c0184fcbc61d87b5"
+    },
+    "docs/RECALL_NATIVE_PREFILL_WT2_TEST_V1_PINS.json": {
+      "bytes": 50110,
+      "sha256": "7e85a47cad0733ac386205dd91438f9df0b64c3c92706529c8109f5e428f40aa"
+    },
+    "docs/RECALL_NATIVE_PREFILL_WT2_TEST_V1_PROTOCOL.md": {
+      "bytes": 4831,
+      "sha256": "4333b79286ee3698d426a760cfbf0824fbe42230d5eb67e4ebdeb437d63ac0d8"
+    },
+    "docs/WT2_TEST_V1_RESULTS.md": {
+      "bytes": 4880,
+      "sha256": "cab6c81e50d17e7bd1b572977333f1f7e28844171dd5997caa77ebcd60cdbce0"
+    },
+    "reports/wt2_test_v1/comparison.json": {
+      "bytes": 163710,
+      "sha256": "6fb3ea201d7cd8d81a79d00d35a456370111922e8bf470af233059e4a6d10bda"
+    },
+    "reports/wt2_test_v1/cpu_audit_v1.json": {
+      "bytes": 922,
+      "sha256": "f7da406bcf878629b6dbd85ef4cf1d5f38615dfa0fa057b2c6407ef8c45082c8"
+    },
+    "reports/wt2_test_v1/resurface.json": {
+      "bytes": 62520,
+      "sha256": "e0ad08dddc4dd13e0ae1e81508c45f496b870702adeb29433a42cf37c23dcf6a"
+    },
+    "reports/wt2_test_v1/w4_manifest.json": {
+      "bytes": 172665,
+      "sha256": "3add3f79f19d2da181c700680500390f773a47b2785d8f6e0ccaaf2ddd7bbc05"
+    },
+    "reports/wt2_test_v1/weight_ledger.json": {
+      "bytes": 55967,
+      "sha256": "ebac889424a2ded96e0e2481b4ce8a50ebe84864875b6088aebd85a79214124e"
+    },
+    "reports/wt2_test_v1/without_resurface.json": {
+      "bytes": 41340,
+      "sha256": "fbe486ea62d977809ebb118d731f0bc88ed13e24a70fcbf145f8209c4181aebc"
+    },
+    "scripts/audit_recall_native_prefill_wt2_test_v1.py": {
+      "bytes": 9784,
+      "sha256": "7fcba3b3789cb1660e67a0f7111c8432b1da71c6ad4ba47a8b65b7415fac63cd"
+    },
+    "scripts/prepare_recall_wt2_test_inputs_v1.py": {
+      "bytes": 4821,
+      "sha256": "e0599313917f54247a648a3ed1e825395e1abcc7f692380e69b528355fcd9e9f"
+    },
+    "scripts/run_recall_native_prefill_wt2_test_v1.py": {
+      "bytes": 15984,
+      "sha256": "45de81f37c691e585d4769235a79f7a22bdf0b5a0123ab88b769c5b04fd4672e"
+    }
+  }
+}

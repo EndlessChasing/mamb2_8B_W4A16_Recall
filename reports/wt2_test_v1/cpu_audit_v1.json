@@ -1,0 +1,22 @@
+{
+  "format": "RECALL_NATIVE_PREFILL_WT2_TEST_V1_CPU_AUDIT",
+  "complete": true,
+  "passed": true,
+  "comparison_sha256": "6fb3ea201d7cd8d81a79d00d35a456370111922e8bf470af233059e4a6d10bda",
+  "pins_sha256": "7e85a47cad0733ac386205dd91438f9df0b64c3c92706529c8109f5e428f40aa",
+  "protocol_sha256": "4333b79286ee3698d426a760cfbf0824fbe42230d5eb67e4ebdeb437d63ac0d8",
+  "runner_sha256": "45de81f37c691e585d4769235a79f7a22bdf0b5a0123ab88b769c5b04fd4672e",
+  "auditor_sha256": "7fcba3b3789cb1660e67a0f7111c8432b1da71c6ad4ba47a8b65b7415fac63cd",
+  "model_kind": "w4",
+  "split": "test",
+  "ppl_execution": "prefill",
+  "windows": 147,
+  "targets": 300963,
+  "ppl": {
+    "without_resurface": 7.9076894253529275,
+    "resurface": 7.51706425275758
+  },
+  "cuda_initialized": false,
+  "torch_imported": false,
+  "scope": "Independent saved-token/hash/NLL arithmetic and frozen-checkpoint evidence audit; no GPU inference replay."
+}

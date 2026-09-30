@@ -1,5 +1,14 @@
 # mamb2_8B_W4A16_Recall
 
+**Official WikiText-2 test PPL: 7.51706** with the fixed published Resurface
+adapter (7.90769 without it), across **147 reset windows / 300,963 targets**.
+The calculation retains the original native parallel SSD prefill path.
+[Test results and reproduction](docs/WT2_TEST_V1_RESULTS.md) ·
+[Paired raw evaluation](reports/wt2_test_v1/comparison.json) ·
+[CPU audit](reports/wt2_test_v1/cpu_audit_v1.json).
+Original validation and synthetic CONFIRM MK results are retained below.
+
+
 Independent W4A16 quantization of pure NVIDIA Mamba2-8B, followed by a Resurface-inspired recall adapter. The quantized weights and independently trained adapter tensors use Apache-2.0.
 
 ## Base selection
@@ -26,7 +35,7 @@ Quality evaluation pairs the W4 base and its serialized FP16 adapter on 130 Wiki
 
 **Status: quantization, training, full paired evaluation and independent report audit are complete.**
 
-| Model | WikiText-2 PPL ↓ | MK recall ↑ |
+| Model | WikiText-2 validation PPL ↓ | Synthetic CONFIRM MK ↑ |
 |---|---:|---:|
 | Source FP16, historical | 7.33418 | 147/384 (38.28%) |
 | Source FP16 + Resurface, historical | 7.05206 | 365/384 (95.05%) |
