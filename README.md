@@ -1,12 +1,20 @@
 # mamb2_8B_W4A16_Recall
 
-**Official WikiText-2 test PPL: 7.51706** with the fixed published Resurface
-adapter (7.90769 without it), across **147 reset windows / 300,963 targets**.
-The calculation retains the original native parallel SSD prefill path.
+## Official WikiText-2 test PPL
+
+| Fixed published model | PPL ↓ |
+| --- | ---: |
+| Without Resurface | 7.90768943 |
+| With published Resurface | **7.51706425** |
+
+**Official test split · 147 reset windows · 300,963 next-token targets.**
+Original native SSD parallel prefill; no state rounding after each token.
 [Test results and reproduction](docs/WT2_TEST_V1_RESULTS.md) ·
 [Paired raw evaluation](reports/wt2_test_v1/comparison.json) ·
 [CPU audit](reports/wt2_test_v1/cpu_audit_v1.json).
-Original validation and synthetic CONFIRM MK results are retained below.
+Historical validation PPL and synthetic CONFIRM MK results are retained below.
+
+
 
 
 Independent W4A16 quantization of pure NVIDIA Mamba2-8B, followed by a Resurface-inspired recall adapter. The quantized weights and independently trained adapter tensors use Apache-2.0.
@@ -42,7 +50,7 @@ Quality evaluation pairs the W4 base and its serialized FP16 adapter on 130 Wiki
 | Independent W4A16 | 8.01210 | 141/384 (36.72%) |
 | **Independent W4A16 + Resurface** | **7.61405** | **361/384 (94.01%)** |
 
-The W4 adapter reduces PPL by **4.97%** and improves recall by **57.29 percentage points** against its own base. Its PPL remains **7.97% higher** than the historical FP16 + Resurface control. All four arms score 0/384 on target-removed controls. The historical comparison passes all recorded prompt/window identity checks; its GPU execution was not rerun for this experiment.
+On validation, the W4 adapter reduces PPL by **4.97%** and improves recall by **57.29 percentage points** against its own base. Its validation PPL remains **7.97% higher** than the historical FP16 + Resurface control. All four arms score 0/384 on target-removed controls. The historical comparison passes all recorded prompt/window identity checks; its GPU execution was not rerun for this experiment.
 
 The independent semantic audit passes **75,146 checks**, including raw metric recomputation, all packed file hashes, serialized adapter identity and training schedule. A fresh-process inference CLI replay reproduces one evaluation case exactly. See [results and scope](docs/RESULTS.md), [full W4 report](reports/w4_resurface_v1_confirm_full_reference.json) and [audit receipt](reports/semantic_audit_v1.json).
 
